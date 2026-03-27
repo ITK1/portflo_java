@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phan Le Ba Khang | Java & Backend Developer Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --bg-main: #0a0a16;
+        --bg-secondary: #16213e;
+        --text-primary: #e6e6e6;
+        --text-secondary: #a0a5b5;
+        --primary-color: #00d4ff;
+        --nav-height: 70px;
+        --font-main: "Poppins", sans-serif;
+        --font-code: "Roboto Mono", monospace;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-main);
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: 0.3s;
+      }
+      ul {
+        list-style: none;
+      }
+      .section {
+        padding: 80px 0;
+      }
+      .section-title {
+        font-size: 2.3rem;
+        text-align: center;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+      }
+      .section-subtitle {
+        text-align: center;
+        color: var(--text-secondary);
+        margin-bottom: 50px;
+      }
+
+      /* Navbar */
+      .navbar {
+        height: var(--nav-height);
+        background-color: rgba(10, 10, 22, 0.95);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+      }
+      .logo {
+        font-family: var(--font-code);
+        font-size: 1.5rem;
+        letter-spacing: -1px;
+      }
+
+      /* Hero */
+      .hero {
+        padding-top: calc(var(--nav-height) + 60px);
+        padding-bottom: 80px;
+      }
+      .hero-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+      }
+      .hero-content {
+        flex: 1;
+      }
+      .hero-subtitle {
+        color: var(--primary-color);
+        font-family: var(--font-code);
+        font-weight: 600;
+      }
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin: 10px 0;
+      }
+      .hero-role {
+        font-size: 1.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        min-height: 40px;
+      }
+      .hero-desc {
+        color: var(--text-secondary);
+        margin-bottom: 30px;
+        max-width: 600px;
+      }
+      .hero-img {
+        width: 320px;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        border: 4px solid var(--primary-color);
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+      }
+
+      /* Skills */
+      .skills-section {
+        background-color: var(--bg-secondary);
+      }
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+      .skill-category {
+        background: rgba(10, 10, 22, 0.4);
+        padding: 25px;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .skill-category h3 {
+        margin-bottom: 20px;
+        color: var(--primary-color);
+        font-size: 1.2rem;
+      }
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .skill-tag {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-family: var(--font-code);
+        border: 1px solid rgba(0, 212, 255, 0.15);
+        transition: 0.3s;
+      }
+      .skill-tag:hover {
+        border-color: var(--primary-color);
+        background: rgba(0, 212, 255, 0.1);
+      }
+
+      /* Projects */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+      .project-card {
+        background-color: var(--bg-secondary);
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: 0.4s;
+        display: flex;
+        flex-direction: column;
+      }
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary-color);
+      }
+      .project-image {
+        width: 100%;
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: var(--primary-color);
+        color: #000;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-weight: 700;
+        font-size: 0.75rem;
+        z-index: 1;
+      }
+      .project-content {
+        padding: 25px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .project-header h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        color: #fff;
+      }
+      .project-desc {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        flex: 1;
+      }
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 25px;
+      }
+      .project-tech span {
+        font-size: 0.75rem;
+        font-family: var(--font-code);
+        color: var(--primary-color);
+        background: rgba(0, 212, 255, 0.1);
+        padding: 3px 10px;
+        border-radius: 4px;
+      }
+
+      /* Buttons */
+      .project-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .project-links a {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid var(--primary-color);
+        padding: 8px 12px;
+        border-radius: 5px;
+      }
+      .project-links a.demo-btn {
+        background: var(--primary-color);
+        color: #000;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+      }
+      .nav-links li {
+        margin-left: 30px;
+      }
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+      .btn-contact {
+        padding: 8px 20px;
+        background-color: rgba(0, 212, 255, 0.1);
+        border-radius: 4px;
+        color: var(--primary-color) !important;
+        border: 1px solid var(--primary-color);
+      }
+
+      /* Animations */
+      .hidden {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 0.8s all ease;
+      }
+      .show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .typing-cursor::after {
+        content: "|";
+        animation: blink 1s infinite;
+        color: var(--primary-color);
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-container {
+          flex-direction: column-reverse;
+          text-align: center;
+        }
+        .hero-title {
+          font-size: 2.5rem;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="#" class="logo">
+          <span style="font-weight: 700; color: #fff">Khang</span
+          ><span style="font-weight: 400; color: var(--primary-color)"
+            >.dev</span
+          >
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact" class="btn-contact">Connect Now</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="hero" id="about">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <p class="hero-subtitle">
+            Java & PHP Developer | 1.5 Years Real-world Experience [cite: 8, 9,
+            94]
+          </p>
+          <h1 class="hero-title">Phan Le Ba Khang</h1>
+          <h2 class="hero-role">
+            I am a <span class="typing-text"></span
+            ><span class="typing-cursor"></span>
+          </h2>
+          <p class="hero-desc">
+            Final-year IT student in Can Tho[cite: 17, 18, 111]. With
+            <strong>over 1.5 years of hands-on experience</strong> in building
+            management systems[cite: 8, 9, 94]. Strong foundation in
+            <strong>Java Backend</strong>[cite: 85], RESTful API [cite: 87], and
+            database optimization[cite: 87]. Capable of basic English
+            communication for global collaboration[cite: 114, 119].
+          </p>
+          <div class="hero-btns">
+            <a
+              href="#projects"
+              style="
+                background: var(--primary-color);
+                color: #000;
+                padding: 12px 25px;
+                border-radius: 5px;
+                font-weight: 700;
+                display: inline-block;
+              "
+            >
+              Explore Projects <i class="fas fa-arrow-down"></i>
+            </a>
+          </div>
+        </div>
+        <div class="hero-img-container">
+          <img
+            src="style/img/anh.jpg"
+            alt="Phan Le Ba Khang"
+            class="hero-img"
+            onerror="
+              this.src =
+                'https://via.placeholder.com/320x320/1a1a2e/00d4ff?text=Khang+Dev'
+            "
+          />
+        </div>
+      </div>
+    </header>
+
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <h2 class="section-title hidden">Experience & Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category hidden">
+            <h3><i class="fas fa-code"></i> Backend Core</h3>
+            <div class="skill-list">
+              <span class="skill-tag">Java (Core/Android) [cite: 85]</span>
+              <span class="skill-tag">PHP (MVC/OOP) [cite: 3, 20]</span>
+              <span class="skill-tag">MySQL / SQL Server [cite: 3, 85]</span>
+              <span class="skill-tag">RESTful API [cite: 73, 87]</span>
+            </div>
+          </div>
+          <div class="skill-category hidden">
+            <h3><i class="fas fa-laptop-code"></i> Frontend & Tools</h3>
+            <div class="skill-list">
+              <span class="skill-tag">JavaScript (AJAX)</span>
+              <span class="skill-tag">HTML5 / CSS3 [cite: 3]</span>
+              <span class="skill-tag">Git / GitHub [cite: 4, 86]</span>
+              <span class="skill-tag">Android Studio [cite: 4, 86]</span>
+            </div>
+          </div>
+          <div class="skill-category hidden">
+            <h3><i class="fas fa-briefcase"></i> Other Information</h3>
+            <div class="skill-list">
+              <span class="skill-tag">Final-year Student [cite: 43]</span>
+              <span class="skill-tag"
+                >English (Basic Comm) [cite: 114, 119]</span
+              >
+              <span class="skill-tag">Based in Can Tho [cite: 46, 123]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title hidden">Featured Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card hidden">
+            <div class="project-image">
+              <span class="badge">Java Android</span>
+              <img
+                src="style/img/gym_log.jpg"
+                alt="GymLog App"
+                onerror="
+                  this.src =
+                    'https://via.placeholder.com/600x400/16213e/00d4ff?text=GymLog+Android+App'
+                "
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3>GymLog - PT Management App</h3>
+              </div>
+              <p class="project-desc">
+                A specialized application for Personal Trainers to manage 1-on-1
+                sessions[cite: 52, 53]. Includes training reminders, session
+                tracking, and invoice management[cite: 54, 56].
+              </p>
+              <div class="project-tech">
+                <span>Java</span><span>Android Studio</span
+                ><span>SQLite</span> [cite: 52]
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ITK1/gymlog" target="_blank"
+                  ><i class="fab fa-github"></i> Code</a
+                >
+                [cite: 57]
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card hidden">
+            <div class="project-image">
+              <img
+                src="style/img/android.jpg"
+                alt="Android HR"
+                onerror="
+                  this.src =
+                    'https://via.placeholder.com/600x400/16213e/00d4ff?text=HR+Management+App'
+                "
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <span class="badge">Java Android</span>
+                <h3>HR & Sales Management App</h3>
+              </div>
+              <p class="project-desc">
+                Native Android application featuring employee attendance
+                tracking and payroll calculation[cite: 16, 66, 105]. Built with
+                robust local <strong>SQLite</strong> storage[cite: 105].
+              </p>
+              <div class="project-tech">
+                <span>Java</span><span>Android Studio</span
+                ><span>SQLite</span> [cite: 105]
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ITK1/QLNS.git" target="_blank"
+                  ><i class="fab fa-github"></i> Code</a
+                >
+                [cite: 68]
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card hidden">
+            <div class="project-image">
+              <img
+                src="style/img/gym.png"
+                alt="Gym Master"
+                onerror="
+                  this.src =
+                    'https://via.placeholder.com/600x400/16213e/00d4ff?text=Gym+Master+PHP'
+                "
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3>Gym Master - Web Management</h3>
+              </div>
+              <p class="project-desc">
+                Comprehensive system for managing gym members and staff
+                roles[cite: 11, 26, 29]. Integrated automated
+                <strong>QR Code Payment API</strong>[cite: 35, 109].
+              </p>
+              <div class="project-tech">
+                <span>PHP</span><span>MySQL</span><span>MVC</span> [cite: 12,
+                27]
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ITK1/gympt.git" target="_blank"
+                  ><i class="fab fa-github"></i> Code</a
+                >
+                [cite: 37]
+                <a href="https://gympt.xo.je/" class="demo-btn" target="_blank"
+                  ><i class="fas fa-eye"></i> Demo</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card hidden">
+            <div class="project-image">
+              <img
+                src="style/img/Cshrapp.jpg"
+                alt="C# Tool"
+                onerror="
+                  this.src =
+                    'https://via.placeholder.com/600x400/16213e/00d4ff?text=WordPress+Tool'
+                "
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3>AutoWpTool - WordPress Automation</h3>
+              </div>
+              <p class="project-desc">
+                Desktop application using <strong>RESTful API</strong> to
+                automate WordPress posting[cite: 71, 73, 101]. Features
+                asynchronous media upload and SEO meta field management[cite:
+                74, 77, 101].
+              </p>
+              <div class="project-tech">
+                <span>C# WinForms</span><span>REST API</span
+                ><span>Async</span> [cite: 98, 101]
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ITK1/AutoWpTool" target="_blank"
+                  ><i class="fab fa-github"></i> Code</a
+                >
+                [cite: 79]
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card hidden">
+            <div class="project-image">
+              <img
+                src="style/img/Php.png"
+                alt="E-commerce"
+                onerror="
+                  this.src =
+                    'https://via.placeholder.com/600x400/16213e/00d4ff?text=PHP+E-commerce'
+                "
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <h3>Freelance E-commerce Platform</h3>
+              </div>
+              <p class="project-desc">
+                Custom-built project for clients featuring a full shopping cart
+                and secure payment integration[cite: 59, 60, 61].
+              </p>
+              <div class="project-tech">
+                <span>PHP</span><span>AJAX</span><span>MySQL</span> [cite: 58,
+                62]
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/ITK1/webphp.git" target="_blank"
+                  ><i class="fab fa-github"></i> Code</a
+                >
+                [cite: 62]
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section skills-section">
+      <div class="container" style="text-align: center">
+        <h2 class="section-title hidden">Ready to Collaborate</h2>
+        <p class="section-subtitle hidden">
+          Available for Java / Backend Developer positions in Can Tho City
+        </p>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+          "
+        >
+          <a
+            href="mailto:Phanlebakhang1002@gmail.com"
+            class="btn-contact"
+            style="padding: 15px 30px"
+          >
+            <i class="fas fa-envelope"></i> Phanlebakhang1002@gmail.com [cite:
+            45, 122]
+          </a>
+          <a
+            href="https://www.facebook.com/phan.le.ba.khang.ITK"
+            target="_blank"
+            class="btn-contact"
+            style="padding: 15px 30px"
+          >
+            <i class="fab fa-facebook"></i> Connect on Facebook [cite: 48, 126]
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      style="
+        text-align: center;
+        padding: 40px 0;
+        color: var(--text-secondary);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      "
+    >
+      <p>
+        &copy; 2026 Phan Le Ba Khang. Built with
+        <span style="color: var(--primary-color)">&hearts;</span> in Can Tho
+        City.
+      </p>
+    </footer>
+
+    <script>
+      const typingText = document.querySelector(".typing-text");
+      const words = [
+        "Java Developer",
+        "Backend Specialist",
+        "Android Developer",
+      ];
+      let wordIndex = 0,
+        charIndex = 0,
+        isDeleting = false;
+
+      const typeEffect = () => {
+        const currentWord = words[wordIndex];
+        const currentChars = currentWord.substring(0, charIndex);
+        typingText.textContent = currentChars;
+        if (!isDeleting && charIndex < currentWord.length) {
+          charIndex++;
+          setTimeout(typeEffect, 100);
+        } else if (isDeleting && charIndex > 0) {
+          charIndex--;
+          setTimeout(typeEffect, 50);
+        } else {
+          isDeleting = !isDeleting;
+          if (!isDeleting) wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(typeEffect, 1200);
+        }
+      };
+      typeEffect();
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".hidden")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
